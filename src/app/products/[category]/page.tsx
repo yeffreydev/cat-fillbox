@@ -2,7 +2,6 @@ import ProductItem from "@/app/ProductItem";
 import { getProductsByCategory } from "@/lib/api/products";
 export default async function Page({ params: { category } }: { params: { category: string } }) {
   const products = await getProductsByCategory(category);
-  console.log(products);
   return (
     <div className="flex flex-col w-11/12 mx-auto gap-5">
       {/* social media  */}

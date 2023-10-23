@@ -7,7 +7,6 @@ const dataPath = path.join(process.cwd(), "/data");
 export const getCategories = async () => {
   const productsPath = path.join(dataPath, "/products");
   const categories = await fs.readdir(productsPath);
-  console.log(categories);
   return categories;
 };
 
@@ -18,7 +17,6 @@ export const getAllProducts = async () => {
   await Promise.all(
     categories.map(async (categoryName) => {
       const categoryPath = path.join(dataPath, "/products/" + categoryName);
-      console.log(categoryPath);
       const productNames = await fs.readdir(categoryPath);
       await Promise.all(
         productNames.map(async (productName) => {
