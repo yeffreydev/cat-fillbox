@@ -1,6 +1,7 @@
 import { getProduct } from "@/lib/api/products";
 import { getSiteSettings } from "@/lib/api/settings";
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -21,7 +22,9 @@ async function ProductPage({ params: { id }, searchParams }: { params: { id: str
   return (
     <div className="flex flex-col  md:flex-row w-10/12 m-auto gap-3 md:gap-5 min-h-[calc(100vh-70px)] pt-10">
       <div className="flex-1 flex md:justify-center">
-        <div className="w-[300px] h-[280px] bg-gray-400"></div>
+        <div className="w-[300px] h-[280px] relative">
+          <Image className="absolute object-contain w-full h-full" width={400} height={300} src={`/static/imgs/${product.image}`} alt="" />
+        </div>
       </div>
       <div className="flex flex-1 flex-col gap-5 lg:gap-10 justify-start items-start">
         <h1 className="text-3xl font-semibold">{product?.name}</h1>
