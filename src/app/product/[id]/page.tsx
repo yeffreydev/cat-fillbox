@@ -30,12 +30,18 @@ async function ProductPage({ params: { id }, searchParams }: { params: { id: str
         <h1 className="text-3xl font-semibold">{product?.name}</h1>
         <p>{product?.description}</p>
         <span className="text-2xl">S/. {product?.price}</span>
+        {/* <div className="flex gap-5 text-2xl font-semibold">
+          <span> - </span>
+          <span> 1 </span>
+          <span> + </span>
+        </div> */}
+        <button className="border border-black w-full md:w-8/12 lg:w-5/12 p-1">Agregar Al Carrito</button>
         <Link
           target="_blank"
-          href={`https://api.whatsapp.com/send?phone=+${settings?.countryCode}${settings?.phone}&text=Hola FillBox, Me gustaria pedir el producto '${product.name}'`}
-          className="uppercase flex items-center gap-2 bg-slate-800 text-white px-7 rounded-xl py-1"
+          href={`https://api.whatsapp.com/send?phone=+${settings?.countryCode}${settings?.phone}&text=Hola FillBox, Me gustaria  pedir el producto '${product.name}'`}
+          className="uppercase flex items-center justify-center gap-2 w-full md:w-8/12 lg:w-5/12 bg-slate-800 text-white px-7  py-1"
         >
-          Comprar <FaWhatsapp />
+          <span>Comprar</span> <FaWhatsapp />
         </Link>
       </div>
     </div>

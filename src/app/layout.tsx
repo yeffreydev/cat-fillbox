@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { getSiteSettings } from "../lib/api/settings";
 import { getCategories } from "@/lib/api/categories";
+import CartProvider from "./cart/CartProvider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();
@@ -19,9 +20,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="es">
       <body className="flex flex-col gap-5">
-        <Header categories={categories ?? []} />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Header categories={categories ?? []} />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
