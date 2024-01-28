@@ -2,7 +2,7 @@
 import { ProductI } from "@/types/product";
 import { Dispatch, FC, PropsWithChildren, SetStateAction, createContext, useEffect, useState } from "react";
 
-interface CartItemI {
+export interface CartItemI {
   product: ProductI;
   quantity: number;
 }
@@ -33,7 +33,6 @@ const CartProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const addItemToCart = (p: ProductI) => {
     const newCartItem: CartItemI = { product: p, quantity: 1 };
-    console.log(items.some((value) => value.product.id == p.id));
     if (!items.some((value) => value.product.id == p.id)) {
       return setItems([...items, newCartItem]);
     }
