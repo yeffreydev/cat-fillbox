@@ -41,7 +41,7 @@ async function ProductPage({ params: { id }, searchParams }: { params: { id: str
         <AddToCart product={product} />
         <Link
           target="_blank"
-          href={`https://api.whatsapp.com/send?phone=+${settings?.countryCode}${settings?.phone}&text=Hola FillBox, Me gustaria  pedir el producto '${product.name}'`}
+          href={`https://api.whatsapp.com/send?phone=+${settings?.countryPre}${settings?.phone}&text=Hola FillBox, Me gustaria  pedir el producto '${product.name}'`}
           className="uppercase flex items-center justify-center gap-2 w-full md:w-8/12 lg:w-5/12 bg-slate-800 text-white px-7  py-1"
         >
           <span>Comprar</span> <FaWhatsapp />
