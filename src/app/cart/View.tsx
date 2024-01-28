@@ -37,6 +37,7 @@ export default function View({ settings }: { settings: SiteSettingsI }) {
             </div>
             <div>
               <Link
+                target="_blank"
                 href={`https://api.whatsapp.com/send?phone=+${settings?.countryPre}${settings?.phone}&text=${text}`}
                 className="uppercase w-[300px]  text-black bg-orange-400 font-semibold p-2 border border-gray-300 "
               >
