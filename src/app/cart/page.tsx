@@ -3,6 +3,7 @@ import { useContext } from "react";
 import CartList from "./CartList";
 import Total from "./Total";
 import { CartContext } from "./CartProvider";
+import Link from "next/link";
 
 export default function CartPage() {
   const { quantity } = useContext(CartContext);
@@ -11,7 +12,9 @@ export default function CartPage() {
       {quantity == 0 ? (
         <div className="flex flex-col gap-3 justify-center items-center">
           <p className="text-2xl">El Carrito esta Vacío</p>
-          <button className="bg-gray-700 text-white p-2 w-full md:w-7/12 lg:w-4/12">Ir a Comprar</button>
+          <Link href={"/"} className="bg-gray-700 text-white p-2 w-full md:w-7/12 lg:w-4/12">
+            Ir a Comprar
+          </Link>
         </div>
       ) : (
         <>

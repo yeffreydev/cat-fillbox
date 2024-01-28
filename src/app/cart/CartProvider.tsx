@@ -13,6 +13,9 @@ interface StateI {
   setItems: Dispatch<SetStateAction<CartItemI[]>>;
   addItemToCart: (p: ProductI) => void;
   addItemsToCart: (products: ProductI[]) => void;
+  removeItem: (p: ProductI) => void;
+  increaseItem: (p: ProductI) => void;
+  decreaseItem: (p: ProductI) => void;
 }
 
 const initialSate: StateI = {
@@ -22,6 +25,9 @@ const initialSate: StateI = {
   setItems: () => {},
   addItemToCart: () => {},
   addItemsToCart: () => {},
+  removeItem: () => {},
+  increaseItem: () => {},
+  decreaseItem: () => {},
 };
 
 export const CartContext = createContext(initialSate);
@@ -32,6 +38,7 @@ const CartProvider: FC<PropsWithChildren> = ({ children }) => {
   const [quantity, setQuantity] = useState(0);
 
   const addItemToCart = (p: ProductI) => {
+    console.log(p);
     const newCartItem: CartItemI = { product: p, quantity: 1 };
     if (!items.some((value) => value.product.id == p.id)) {
       return setItems([...items, newCartItem]);
@@ -44,6 +51,28 @@ const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     );
   };
 
+  const removeItem = (p: ProductI) => {
+    if (items.some((value) => value.product.id == p.id)) {
+      setItems(items.filter((value) => value.product.id != p.id));
+    }
+  };
+
+  const increaseItem = (p: ProductI) => {
+    addItemToCart(p);
+  };
+  const decreaseItem = (p: ProductI) => {
+    const cartItem = items.find((value) => value.product.id == p.id);
+    if (!cartItem) return;
+    if (cartItem.quantity <= 1) {
+      return removeItem(p);
+    }
+    setItems(
+      items.map((item) => {
+        if (item.product.id == p.id) item.quantity--;
+        return item;
+      })
+    );
+  };
   const addItemsToCart = (products: ProductI[]) => {
     products.forEach((item) => addItemToCart(item));
   };
@@ -58,7 +87,7 @@ const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     setQuantity(quantity);
   }, [items]);
 
-  return <CartContext.Provider value={{ totalPrice, quantity, items, setItems, addItemsToCart, addItemToCart }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ totalPrice, quantity, items, setItems, addItemsToCart, addItemToCart, removeItem, increaseItem, decreaseItem }}>{children}</CartContext.Provider>;
 };
 
 export default CartProvider;

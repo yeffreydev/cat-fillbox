@@ -24,7 +24,7 @@ const ProductItem = ({ product }: { product: ProductI }) => {
       <p>{product.description.length > 100 ? product.description.slice(0, 99) + "..." : product.description}</p>
       <div className="flex w-11/12 justify-between">
         <span className="text-2xl font-semibold">S/. {product.price}</span>
-        <AddToCartBtn p={{ ...product, id: product.id + product.category }} />
+        <AddToCartBtn p={{ ...product, id: product.id + product.category.toLowerCase() }} />
       </div>
       <button className="bg-orange-400 text-black uppercase w-full mx-auto font-bold py-1">Comprar</button>
     </div>

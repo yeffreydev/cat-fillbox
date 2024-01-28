@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
+import AddToCart from "./AddToCart";
 
 export async function generateMetadata({ params: { id }, searchParams }: { params: { id: string }; searchParams: { [key: string]: string | string[] | undefined } }): Promise<Metadata> {
   const product = await getProduct(id, searchParams["category"] as string | undefined);
@@ -14,11 +15,13 @@ export async function generateMetadata({ params: { id }, searchParams }: { param
 }
 
 async function ProductPage({ params: { id }, searchParams }: { params: { id: string }; searchParams: { [key: string]: string | string[] | undefined } }) {
-  const product = await getProduct(id, searchParams["category"] as string | undefined);
+  let product = await getProduct(id, searchParams["category"] as string | undefined);
+
   const settings = await getSiteSettings();
   if (!product) {
     return <div>Product Not Found</div>;
   }
+  product = { ...product, id, category: searchParams["category"]! as string };
   return (
     <div className="flex flex-col  md:flex-row w-10/12 m-auto gap-3 md:gap-5 min-h-[calc(100vh-70px)] pt-10">
       <div className="flex-1 flex md:justify-center">
@@ -35,7 +38,7 @@ async function ProductPage({ params: { id }, searchParams }: { params: { id: str
           <span> 1 </span>
           <span> + </span>
         </div> */}
-        <button className="border border-black w-full md:w-8/12 lg:w-5/12 p-1">Agregar Al Carrito</button>
+        <AddToCart product={product} />
         <Link
           target="_blank"
           href={`https://api.whatsapp.com/send?phone=+${settings?.countryCode}${settings?.phone}&text=Hola FillBox, Me gustaria  pedir el producto '${product.name}'`}
