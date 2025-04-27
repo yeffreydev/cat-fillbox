@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "slug": "hoodies",
+    "name": "Poleras",
+    "cover": "/categories/categoria-a.jpg",
+    "description": "Poleras de alta calidad para todo NPC"
+  },
+  {
+    "id": 2,
+    "slug": "t-shirt",
+    "name": "Polos",
+    "cover": "/categories/categoria-b.jpg",
+    "description": "Polos de alta calidad para todo NPC"
+  },
+  {
+    "id": 3,
+    "slug": "trending",
+    "name": "Tendencias",
+    "cover": "/categories/categoria-c.jpg",
+    "description": "Lo más vendido de la tienda"
+  }
+]

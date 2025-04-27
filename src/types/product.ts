@@ -5,4 +5,5 @@ export interface ProductI {
   price: number;
   category: string;
   id: string;
+  categoryId: number;
 }

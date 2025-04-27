@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useContext } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { CartContext } from "../cart/CartProvider";
+import { CategoryI } from "@/types/category";
 
 interface Props {
-  categories: string[];
+  categories: CategoryI[];
 }
 function Header({ categories }: Props) {
   const { quantity } = useContext(CartContext);
@@ -16,15 +17,20 @@ function Header({ categories }: Props) {
       </Link>
       <ul className="flex-1 flex items-center gap-3 justify-end">
         {categories.map((item, index) => {
+          console.log(item);
           return (
             <li key={index}>
-              <a href={"/products/" + item}>{item[0].toUpperCase() + item.slice(1)}</a>
+              <Link href={"/products/" + item.slug}>{item.name}</Link>
             </li>
           );
         })}
         <li>
           <Link className="text-xl relative" href={"/cart"}>
-            {quantity != 0 && <span className="text-red-500 absolute top-[-70%] right-[-30%] text-sm font-bold">{quantity <= 9 ? quantity : "+9"}</span>}
+            {quantity != 0 && (
+              <span className="text-red-500 absolute top-[-70%] right-[-30%] text-sm font-bold">
+                {quantity <= 9 ? quantity : "+9"}
+              </span>
+            )}
             <FiShoppingCart />
           </Link>
         </li>

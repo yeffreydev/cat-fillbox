@@ -5,53 +5,82 @@ import path from "path";
 const dataPath = path.join(process.cwd(), "/data");
 
 export const getCategories = async () => {
-  const productsPath = path.join(dataPath, "/products");
-  const categories = await fs.readdir(productsPath);
-  return categories;
+  //categories
+  const categoriesPath = path.join(dataPath, "/categories.json");
+
+  const categoriesString = await fs.readFile(categoriesPath, "utf-8");
+
+  const categoriesArray = JSON.parse(categoriesString) as {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    slug: string;
+  }[];
+  return categoriesArray;
 };
 
 export const getAllProducts = async () => {
-  const categories = await getCategories();
-  const allProducts: ProductI[] = [];
+  //categories
+  const categoriesPath = path.join(dataPath, "/categories.json");
 
-  await Promise.all(
-    categories.map(async (categoryName) => {
-      const categoryPath = path.join(dataPath, "/products/" + categoryName);
-      const productNames = await fs.readdir(categoryPath);
-      await Promise.all(
-        productNames.map(async (productName) => {
-          const productPath = path.join(categoryPath, `/${productName}`);
-          const stringProduct = await fs.readFile(productPath, "utf-8");
-          allProducts.push({ id: productName, category: categoryName, ...JSON.parse(stringProduct) });
-        })
-      );
-    })
-  );
+  const categoriesString = await fs.readFile(categoriesPath, "utf-8");
 
-  return allProducts;
+  const categoriesArray = JSON.parse(categoriesString) as {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    slug: string;
+  }[];
+
+  //rpdocuts
+  const productsPath = path.join(dataPath, "/products.json");
+  const products = await fs.readFile(productsPath, "utf-8");
+  let productsArray = JSON.parse(products) as ProductI[];
+
+  productsArray = productsArray.map((product) => {
+    const findCategory = categoriesArray.find(
+      (category) => category.id === product.categoryId
+    );
+    product.category = findCategory?.name || "";
+    return product;
+  });
+
+  return productsArray;
 };
 
 export const getProduct = async (id: string, category: string | undefined) => {
-  if (!category) {
-    return undefined;
+  const allProducts = await getAllProducts();
+  const product = allProducts.find(
+    (product) => Number(product.id) === Number(id)
+  );
+  if (!product) {
+    return null;
   }
-  const productPath = path.join(dataPath, `/products/${category}/${id}.json`);
-  const stringProduct = await fs.readFile(productPath, "utf-8");
-  const product = JSON.parse(stringProduct) as ProductI;
   return product;
 };
 
-export const getProductsByCategory = async (category: string) => {
-  const categoryPath = path.join(dataPath, `/products/${category}`);
-  const productNames = await fs.readdir(categoryPath);
-  const products: ProductI[] = [];
-  await Promise.all(
-    productNames.map(async (productId) => {
-      const productPath = path.join(categoryPath, `/${productId}`);
-      const stringProduct = await fs.readFile(productPath, "utf-8");
-      const product = JSON.parse(stringProduct) as ProductI;
-      products.push({ ...product, id: productId, category });
-    })
+export const getProductsByCategory = async (slug: string) => {
+  //categories
+  const categoriesPath = path.join(dataPath, "/categories.json");
+
+  const categoriesString = await fs.readFile(categoriesPath, "utf-8");
+
+  const categoriesArray = JSON.parse(categoriesString) as {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    slug: string;
+  }[];
+  const category = categoriesArray.find((cat) => cat.slug === slug);
+  if (!category) {
+    return [];
+  }
+  const allProducts = await getAllProducts();
+  const products = allProducts.filter(
+    (product) => product.categoryId === category.id
   );
   return products;
 };
