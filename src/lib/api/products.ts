@@ -1,5 +1,4 @@
 import { IProduct } from "@/types/product";
-import axios from "axios";
 import fs from "fs/promises";
 import path from "path";
 
@@ -22,12 +21,20 @@ export const getCategories = async () => {
 };
 
 export const getAllProducts = async () => {
-  const products = await axios.get<IProduct[]>(
-    process.env.NEXT_PUBLIC_PUBLIC_HOST + "/api/products"
-  );
-  console.log(products.data);
+  try {
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_PUBLIC_HOST + "/api/products"
+    );
 
-  return products.data;
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = (await res.json()) as IProduct[];
+    return data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };
 
 export const getProduct = async (id: string) => {

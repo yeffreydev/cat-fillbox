@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import { getSiteSettings } from "@/lib/api/settings";
 import { getCategories } from "@/lib/api/categories";
 import CartProvider from "./cart/CartProvider";
-import axios from "axios";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();
@@ -21,15 +20,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await axios.get(
-    process.env.NEXT_PUBLIC_PUBLIC_HOST + "/api/categories"
-  );
-  const categoriesData = categories.data;
+  const categories = await getCategories();
   return (
     <html lang="es">
       <body className="flex flex-col gap-5">
         <CartProvider>
-          <Header categories={categoriesData ?? []} />
+          <Header categories={categories ?? []} />
           {children}
           <Footer />
         </CartProvider>
