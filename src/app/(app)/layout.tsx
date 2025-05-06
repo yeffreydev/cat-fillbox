@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { getSiteSettings } from "@/lib/api/settings";
 import { getCategories } from "@/lib/api/categories";
 import CartProvider from "./cart/CartProvider";
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();

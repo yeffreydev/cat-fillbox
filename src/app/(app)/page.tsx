@@ -1,5 +1,8 @@
 import { getAllProducts } from "@/lib/api/products";
 import ProductItem from "./ProductItem";
+
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const products = await getAllProducts();
   return (
