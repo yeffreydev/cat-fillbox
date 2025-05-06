@@ -3,10 +3,16 @@
     "id": 1,
     "name": "Polera Los Angeles",
     "description": "Polera Unisex con materiales de primera calidad, Su versatilidad la convierte en una prenda esencial, combinando a la perfección estilo, comodidad y durabilidad, para todo NPC.",
-    "devirations": {
-      "size": ["S", "M", "L"],
-      "color": ["red", "blue"]
-    },
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "name": "color",
+        "values": ["red", "blue"]
+      }
+    ],
     "price": 60,
     "categoryId": 1,
     "image": "/products/00xx00lxh023.jpg",
@@ -20,10 +26,16 @@
     "id": 2,
     "name": "Polera New York",
     "description": "Polera Unisex con materiales de primera calidad, Su versatilidad la convierte en una prenda esencial, combinando a la perfección estilo, comodidad y durabilidad, para todo NPC.",
-    "devirations": {
-      "size": ["S", "M", "L"],
-      "color": ["red", "blue"]
-    },
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "name": "color",
+        "values": ["red", "blue"]
+      }
+    ],
     "price": 60,
     "categoryId": 1,
     "image": "/products/001xx00lxh003.jpg",
@@ -37,10 +49,16 @@
     "id": 3,
     "name": "T-Shirt I Love Cat",
     "description": "Hermoso polito de  gatito tierno, perfecto regalo para tu pareja, puedes pedir el color que tu desees, en esencia un polo de NPC.",
-    "devirations": {
-      "size": ["S", "M", "L"],
-      "color": ["red", "blue"]
-    },
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "name": "color",
+        "values": ["red", "blue"]
+      }
+    ],
     "price": 30,
     "categoryId": 2,
     "image": "/products/gato-shirt.webp",
@@ -54,10 +72,16 @@
     "id": 3,
     "name": "Gorras para Pareja Personalizable",
     "description": "Gorras para parejas que puedes personalizar con las iniciales de las personas que amas, en esencia para parejas NPC.",
-    "devirations": {
-      "size": ["S", "M", "L"],
-      "color": ["red", "blue"]
-    },
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "name": "color",
+        "values": ["red", "blue"]
+      }
+    ],
     "price": 50,
     "categoryId": 3,
     "image": "/products/x88999xjios98.png",

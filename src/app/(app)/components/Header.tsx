@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useContext } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { CartContext } from "../cart/CartProvider";
-import { CategoryI } from "@/types/category";
+import { ICategory } from "@/types/category";
 
 interface Props {
-  categories: CategoryI[];
+  categories: ICategory[];
 }
 function Header({ categories }: Props) {
   const { quantity } = useContext(CartContext);

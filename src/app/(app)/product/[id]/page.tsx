@@ -8,38 +8,24 @@ import AddToCart from "./AddToCart";
 
 export async function generateMetadata({
   params: { id },
-  searchParams,
 }: {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }): Promise<Metadata> {
-  const product = await getProduct(
-    id,
-    searchParams["category"] as string | undefined
-  );
+  const product = await getProduct(id);
   return {
     title: product?.name,
     description: product?.description,
   };
 }
 
-async function ProductPage({
-  params: { id },
-  searchParams,
-}: {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  let product = await getProduct(
-    id,
-    searchParams["category"] as string | undefined
-  );
+async function ProductPage({ params: { id } }: { params: { id: string } }) {
+  let product = await getProduct(id);
 
   const settings = await getSiteSettings();
   if (!product) {
     return <div>Product Not Found</div>;
   }
-  product = { ...product, id, category: searchParams["category"]! as string };
   return (
     <div className="flex flex-col  md:flex-row w-10/12 m-auto gap-3 md:gap-5 min-h-[calc(100vh-70px)] pt-10">
       <div className="flex-1 flex md:justify-center">

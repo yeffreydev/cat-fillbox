@@ -1,7 +1,7 @@
-export interface CategoryI {
+export interface ICategory {
   id: number;
   name: string;
   description: string;
-  image: string;
   slug: string;
+  cover: string;
 }

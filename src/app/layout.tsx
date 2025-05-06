@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import { getSiteSettings } from "../lib/api/settings";
 import { getCategories } from "@/lib/api/categories";
-import CartProvider from "./cart/CartProvider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();
@@ -15,17 +12,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const categories = await getCategories();
   return (
     <html lang="es">
-      <body className="flex flex-col gap-5">
-        <CartProvider>
-          <Header categories={categories ?? []} />
-          {children}
-          <Footer />
-        </CartProvider>
-      </body>
+      <body className="flex flex-col gap-5">{children}</body>
     </html>
   );
 }

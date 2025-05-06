@@ -1,4 +1,4 @@
-import { CategoryI } from "@/types/category";
+import { ICategory } from "@/types/category";
 import fs from "fs/promises";
 import path from "path";
 
@@ -10,6 +10,6 @@ export const getCategories = async () => {
 
   const categoriesString = await fs.readFile(categoriesPath, "utf-8");
 
-  const categoriesArray = JSON.parse(categoriesString) as CategoryI[];
+  const categoriesArray = JSON.parse(categoriesString) as ICategory[];
   return categoriesArray;
 };

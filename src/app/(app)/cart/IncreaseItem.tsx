@@ -2,9 +2,9 @@
 
 import { useContext } from "react";
 import { CartContext } from "./CartProvider";
-import { ProductI } from "@/types/product";
+import { IProduct } from "@/types/product";
 
-export default function IncreaseItem({ product }: { product: ProductI }) {
+export default function IncreaseItem({ product }: { product: IProduct }) {
   const { increaseItem } = useContext(CartContext);
   return (
     <button onClick={() => increaseItem(product)} className="p-2">

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "axios": "^1.9.0",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",
@@ -24,5 +26,9 @@
     "postcss": "^8",
     "tailwindcss": "^3",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.9",
+    "utf-8-validate": "^6.0.5"
   }
 }

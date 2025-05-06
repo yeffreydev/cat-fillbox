@@ -1,11 +1,11 @@
-import { ProductI } from "@/types/product";
+import { IProduct } from "@/types/product";
 import Image from "next/image";
 import { FaCartPlus, FaWhatsapp } from "react-icons/fa6";
 import Link from "next/link";
 import AddToCartBtn from "./components/AddToCartBtn";
 import { getSiteSettings } from "@/lib/api/settings";
 
-const ProductItem = async ({ product }: { product: ProductI }) => {
+const ProductItem = async ({ product }: { product: IProduct }) => {
   const settings = await getSiteSettings();
 
   return (
@@ -37,7 +37,10 @@ const ProductItem = async ({ product }: { product: ProductI }) => {
       <div className="flex w-11/12 justify-between">
         <span className="text-2xl font-semibold">S/. {product.price}</span>
         <AddToCartBtn
-          p={{ ...product, id: product.id + product.category.toLowerCase() }}
+          p={{
+            ...product,
+            id: product.id + (product.category?.name.toLowerCase() || ""),
+          }}
         />
       </div>
       <Link
