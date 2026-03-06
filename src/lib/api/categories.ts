@@ -1,23 +1,19 @@
 import { ICategory } from "@/types/category";
-import fs from "fs/promises";
-import path from "path";
-
-const dataPath = path.join(process.cwd(), "/data");
+import { categories } from "../data/categories";
 
 export const getCategories = async () => {
   //categories
-  try {
-    const res = await fetch(
-      process.env.NEXT_PUBLIC_PUBLIC_HOST + "/api/categories"
-    );
+  await categories.get();
+  return categories.list;
+};
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = (await res.json()) as ICategory[];
-    return data;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
+export const getCategoryBySlug = async (slug: string) => {
+  if (!categories.list.length) {
+    await categories.get();
   }
+  const category = categories.list.find((item) => item.slug === slug);
+  if (!category) {
+    throw new Error(`Category with slug "${slug}" not found`);
+  }
+  return category as ICategory;
 };

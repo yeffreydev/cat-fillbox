@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { CartContext } from "../cart/CartProvider";
 import { ICategory } from "@/types/category";
+import Image from "next/image";
 
 interface Props {
   categories: ICategory[];
@@ -13,7 +14,12 @@ function Header({ categories }: Props) {
   return (
     <nav className="flex justify-between w-11/12 mx-auto h-[70px] items-center">
       <Link href={"/"}>
-        <h1 className=" text-xl font-semibold">FillBox</h1>
+        <Image
+          src={"/android-chrome-512x512.png"}
+          width={50}
+          height={50}
+          alt="FillBox Logo"
+        />
       </Link>
       <ul className="flex-1 flex items-center gap-3 justify-end">
         {categories.map((item, index) => {

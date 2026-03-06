@@ -1,7 +1,7 @@
 import { getAllProducts } from "@/lib/api/products";
 import ProductItem from "./ProductItem";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600; // 10 minutes
 
 export default async function Page() {
   const products = await getAllProducts();

@@ -1,36 +1,39 @@
+import { ICategory } from "@/types/category";
 import { IProduct } from "@/types/product";
 import fs from "fs/promises";
 import path from "path";
 
-const dataPath = path.join(process.cwd(), "/data");
+const dataPath = path.join(process.cwd(), "data");
 
 export const getCategories = async () => {
-  //categories
-  const categoriesPath = path.join(dataPath, "/categories.json");
+  const categoriesPath = path.join(dataPath, "categories.json");
 
   const categoriesString = await fs.readFile(categoriesPath, "utf-8");
 
-  const categoriesArray = JSON.parse(categoriesString) as {
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    slug: string;
-  }[];
+  const categoriesArray = JSON.parse(categoriesString) as ICategory[];
   return categoriesArray;
 };
 
 export const getAllProducts = async () => {
   try {
-    const res = await fetch(
-      process.env.NEXT_PUBLIC_PUBLIC_HOST + "/api/products"
+    const productsPath = path.join(dataPath, "products.json");
+    const [productsString, categories] = await Promise.all([
+      fs.readFile(productsPath, "utf-8"),
+      getCategories(),
+    ]);
+    const products = JSON.parse(productsString) as IProduct[];
+    const categoriesMap = new Map(
+      categories.map((category) => [category.id, category])
     );
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = (await res.json()) as IProduct[];
-    return data;
+    return products.map((product) => ({
+      ...product,
+      categoryId: Number(product.categoryId),
+      price: Number(product.price),
+      images: product.images?.length ? product.images : [product.image],
+      devirations: product.devirations ?? [],
+      category: categoriesMap.get(Number(product.categoryId)),
+    }));
   } catch (error) {
     console.error("Error fetching products:", error);
     return [];

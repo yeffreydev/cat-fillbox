@@ -1,6 +1,6 @@
 import { IProduct } from "@/types/product";
 import Image from "next/image";
-import { FaCartPlus, FaWhatsapp } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa6";
 import Link from "next/link";
 import AddToCartBtn from "./components/AddToCartBtn";
 import { getSiteSettings } from "@/lib/api/settings";
@@ -9,33 +9,33 @@ const ProductItem = async ({ product }: { product: IProduct }) => {
   const settings = await getSiteSettings();
 
   return (
-    <div className="md:w-[350px] mx-auto w-10/12 p-3 rounded-lg hover:shadow shadow-gray-300 flex flex-col gap-4 items-start">
-      <Link
-        href={`/product/${product.id}?category=${product.category}`}
-        className="group w-full flex flex-col"
-      >
-        <div className="h-[160px] relative overflow-hidden group-hover:shadow-lg shadow-gray-300 w-full">
+    <div className="w-full max-w-[350px] mx-auto p-4  flex flex-col gap-4 bg-white transition-shadow duration-300">
+      <Link href={`/product/${product.id}`} className="group flex flex-col">
+        <div className="relative h-[200px] w-full overflow-hidden rounded-md group-hover:shadow-md transition-shadow duration-300">
           <Image
-            loading="eager"
-            className="relative box-border bg-white duration-100  group-hover:scale-110 object-contain w-full h-full"
-            width={"300"}
-            height={"200"}
+            loading="lazy"
+            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105 bg-white"
+            width={300}
+            height={200}
             src={product.image}
-            alt=""
+            alt={product.name || "Product image"}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8//8/AwAI/AL+5ezb1gAAAABJRU5ErkJggg=="
           />
         </div>
-        <h2 className="text-2xl font-semibold group-hover:underline">
+        <h2 className="text-xl font-semibold mt-2 group-hover:underline truncate">
           {product.name}
         </h2>
       </Link>
 
-      <p>
-        {product.description.length > 100
-          ? product.description.slice(0, 99) + "..."
-          : product.description}
+      <p className="text-gray-600 text-sm h-[60px] overflow-hidden line-clamp-3">
+        {product.description}
       </p>
-      <div className="flex w-11/12 justify-between">
-        <span className="text-2xl font-semibold">S/. {product.price}</span>
+
+      <div className="flex justify-between items-center">
+        <span className="text-xl font-semibold text-gray-800">
+          S/. {product.price}
+        </span>
         <AddToCartBtn
           p={{
             ...product,
@@ -43,13 +43,14 @@ const ProductItem = async ({ product }: { product: IProduct }) => {
           }}
         />
       </div>
+
       <Link
         target="_blank"
-        href={`https://api.whatsapp.com/send?phone=+${settings?.countryPre}${settings?.phone}&text=Hola FillBox, Me gustaria  pedir el producto '${product.name}'`}
-        className="bg-orange-400 flex justify-center gap-3 items-center text-black uppercase w-full mx-auto font-bold py-1"
+        href={`https://api.whatsapp.com/send?phone=+${settings?.countryPre}${settings?.phone}&text=Hola FillBox, Me gustaría pedir el producto '${product.name}'`}
+        className="bg-orange-400 flex justify-center gap-2 items-center text-black uppercase w-full py-2 font-bold hover:bg-orange-500 transition-colors duration-200"
       >
-        <span>Comprar </span>
-        <FaWhatsapp />
+        <span>Comprar</span>
+        <FaWhatsapp size={20} />
       </Link>
     </div>
   );

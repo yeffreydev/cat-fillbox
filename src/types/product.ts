@@ -10,4 +10,5 @@ export interface IProduct {
   categoryId: number;
   devirations: { name: string; values: string[] }[];
   images: string[];
+  discount?: number;
 }

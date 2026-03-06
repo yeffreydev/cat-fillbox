@@ -1,23 +1,16 @@
 [
   {
     "id": 1,
-    "slug": "hoodies",
+    "slug": "poleras",
     "name": "Poleras",
-    "cover": "/categories/categoria-a.jpg",
-    "description": "Poleras de alta calidad para todo NPC"
+    "cover": "/products/poleras-unisex-negro-frontal.png",
+    "description": "Poleras urbanas y cómodas para uso diario."
   },
   {
     "id": 2,
-    "slug": "t-shirt",
+    "slug": "polos",
     "name": "Polos",
-    "cover": "/categories/categoria-b.jpg",
-    "description": "Polos de alta calidad para todo NPC"
-  },
-  {
-    "id": 3,
-    "slug": "trending",
-    "name": "Tendencias",
-    "cover": "/categories/categoria-c.jpg",
-    "description": "Lo más vendido de la tienda"
+    "cover": "/products/t-shirt-black-001.jpg",
+    "description": "Polos casuales con buen fit y estampados originales."
   }
 ]

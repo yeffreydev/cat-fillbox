@@ -1,54 +1,31 @@
 [
   {
     "id": 1,
-    "name": "Polera Los Angeles",
-    "description": "Polera Unisex con materiales de primera calidad, Su versatilidad la convierte en una prenda esencial, combinando a la perfección estilo, comodidad y durabilidad, para todo NPC.",
+    "name": "Polera Oversize Negra",
+    "description": "Polera unisex de corte oversize, tela gruesa y suave para uso diario.",
     "devirations": [
       {
         "name": "size",
-        "values": ["S", "M", "L"]
+        "values": ["S", "M", "L", "XL"]
       },
       {
         "name": "color",
-        "values": ["red", "blue"]
+        "values": ["negro", "gris"]
       }
     ],
-    "price": 60,
+    "price": 79,
     "categoryId": 1,
-    "image": "/products/00xx00lxh023.jpg",
+    "image": "/products/poleras-unisex-negro-frontal.png",
     "images": [
+      "/products/poleras-unisex-negro-frontal.png",
       "/products/00xx00lxh023.jpg",
-      "/products/00xx00lxh023.jpg",
-      "/products/00xx00lxh023.jpg"
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Polera New York",
-    "description": "Polera Unisex con materiales de primera calidad, Su versatilidad la convierte en una prenda esencial, combinando a la perfección estilo, comodidad y durabilidad, para todo NPC.",
-    "devirations": [
-      {
-        "name": "size",
-        "values": ["S", "M", "L"]
-      },
-      {
-        "name": "color",
-        "values": ["red", "blue"]
-      }
-    ],
-    "price": 60,
-    "categoryId": 1,
-    "image": "/products/001xx00lxh003.jpg",
-    "images": [
-      "/products/001xx00lxh003.jpg",
-      "/products/001xx00lxh003.jpg",
       "/products/001xx00lxh003.jpg"
     ]
   },
   {
-    "id": 3,
-    "name": "T-Shirt I Love Cat",
-    "description": "Hermoso polito de  gatito tierno, perfecto regalo para tu pareja, puedes pedir el color que tu desees, en esencia un polo de NPC.",
+    "id": 2,
+    "name": "Polera New York Classic",
+    "description": "Polera con estampado New York, fit regular y acabado premium para clima fresco.",
     "devirations": [
       {
         "name": "size",
@@ -56,22 +33,68 @@
       },
       {
         "name": "color",
-        "values": ["red", "blue"]
+        "values": ["negro", "blanco"]
       }
     ],
-    "price": 30,
-    "categoryId": 2,
-    "image": "/products/gato-shirt.webp",
+    "price": 69,
+    "categoryId": 1,
+    "image": "/products/001xx00lxh003.jpg",
     "images": [
-      "/products/gato-shirt.webp",
-      "/products/gato-shirt.webp",
-      "/products/gato-shirt.webp"
+      "/products/001xx00lxh003.jpg",
+      "/products/00xx00lxh023.jpg",
+      "/products/poleras-unisex-negro-frontal.png"
     ]
   },
   {
     "id": 3,
-    "name": "Gorras para Pareja Personalizable",
-    "description": "Gorras para parejas que puedes personalizar con las iniciales de las personas que amas, en esencia para parejas NPC.",
+    "name": "Polera Los Angeles Street",
+    "description": "Polera de estilo urbano con print frontal y costuras reforzadas.",
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["M", "L", "XL"]
+      },
+      {
+        "name": "color",
+        "values": ["negro", "azul"]
+      }
+    ],
+    "price": 72,
+    "categoryId": 1,
+    "image": "/products/00xx00lxh023.jpg",
+    "images": [
+      "/products/00xx00lxh023.jpg",
+      "/products/poleras-unisex-negro-frontal.png",
+      "/products/001xx00lxh003.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Polo Basic Black",
+    "description": "Polo básico de algodón peinado, ideal para combinar con cualquier outfit.",
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["S", "M", "L", "XL"]
+      },
+      {
+        "name": "color",
+        "values": ["negro", "blanco"]
+      }
+    ],
+    "price": 39,
+    "categoryId": 2,
+    "image": "/products/t-shirt-black-001.jpg",
+    "images": [
+      "/products/t-shirt-black-001.jpg",
+      "/products/jordan.webp",
+      "/products/gato-shirt.webp"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Polo Cat Lover",
+    "description": "Polo con estampado de gato, suave al tacto y perfecto para uso casual.",
     "devirations": [
       {
         "name": "size",
@@ -79,16 +102,39 @@
       },
       {
         "name": "color",
-        "values": ["red", "blue"]
+        "values": ["blanco", "negro"]
       }
     ],
-    "price": 50,
-    "categoryId": 3,
-    "image": "/products/x88999xjios98.png",
+    "price": 45,
+    "categoryId": 2,
+    "image": "/products/gato-shirt.webp",
     "images": [
-      "/products/x88999xjios98.png",
-      "/products/x88999xjios98.png",
-      "/products/x88999xjios98.png"
+      "/products/gato-shirt.webp",
+      "/products/t-shirt-black-001.jpg",
+      "/products/jordan.webp"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Polo Jordan Minimal",
+    "description": "Polo de diseño minimal con excelente caída y acabado premium.",
+    "devirations": [
+      {
+        "name": "size",
+        "values": ["M", "L", "XL"]
+      },
+      {
+        "name": "color",
+        "values": ["negro", "gris"]
+      }
+    ],
+    "price": 55,
+    "categoryId": 2,
+    "image": "/products/jordan.webp",
+    "images": [
+      "/products/jordan.webp",
+      "/products/t-shirt-black-001.jpg",
+      "/products/gato-shirt.webp"
     ]
   }
 ]
